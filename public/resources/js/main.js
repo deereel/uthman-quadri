@@ -23,13 +23,10 @@ window.about = function() {
     layers[1].classList.add("active");
     updateActiveTab(1);
     
-    // Initialize text animation for about section
-    setTimeout(() => {
-        let aboutText = document.querySelector(".about .content .text");
-        if (aboutText && !aboutText.querySelector("span")) {
-            aboutText.innerHTML = aboutText.textContent.replace(/\S/g, `<span>$&</span>`);
-        }
-    }, 100);
+    // Trigger text scattering animation
+    if (window.triggerAboutAnimation) {
+        window.triggerAboutAnimation();
+    }
 }
 
 window.services = function() {

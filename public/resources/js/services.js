@@ -14,9 +14,11 @@ const projects = [
     { name: 'HR Onboarding Workflow', img: 'public/resources/img/portfolios/logo/3.jpg' }
 ];
 
-function getDailySeed() {
-    const today = new Date();
-    return today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+function getTwiceDaily Seed() {
+    const now = new Date();
+    const hour = now.getHours();
+    const period = hour < 12 ? 0 : 1; // 0 for AM, 1 for PM
+    return now.getFullYear() * 100000 + (now.getMonth() + 1) * 1000 + now.getDate() * 10 + period;
 }
 
 function seededRandom(seed) {
@@ -25,7 +27,7 @@ function seededRandom(seed) {
 }
 
 function getRandomProjects() {
-    const seed = getDailySeed();
+    const seed = getTwiceDailySeed();
     const shuffled = [...projects];
     
     for (let i = shuffled.length - 1; i > 0; i--) {

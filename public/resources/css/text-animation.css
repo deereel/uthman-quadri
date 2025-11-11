@@ -1,0 +1,17 @@
+.letter {
+    display: inline-block;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+.letter.scattered {
+    position: absolute;
+    z-index: 1000;
+}
+
+#animated-text {
+    position: relative;
+    min-height: 120px;
+    font-family: 'Poppins', 'Playfair Display', serif;
+    font-weight: 400;
+}

@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="public/resources/css/portfolio.css" />
         <link rel="stylesheet" href="public/resources/css/comments.css" />
         <link rel="stylesheet" href="public/resources/css/contact.css" />
+        <link rel="stylesheet" href="public/resources/css/text-animation.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css" />
         <link rel="stylesheet" href="public/resources/css/style.css" />
         <link
@@ -102,7 +104,7 @@
                     <div class="content-for-home">
                         <div class="img-container"></div>
                         <h1>Hi, I'm Uthman Oladayo Quadri</h1>
-                        <p style="color:#fff; font-size: 1.2em; margin-top: 10px;">Automation & No-Code Specialist</p>
+                        <p style="color:#fff; font-size: 1.2em; margin-top: 10px;">No-Code & Low-Code Automations Specialist</p>
                         <div class="social-icons">
                             <div class="s-icon">
                                 <a href="https://linkedin.com/in/uthman-quadri" target="_blank">
@@ -221,13 +223,13 @@
                             <div class="content">
                                 <p>Hello,</p>
                                 <h1>I'm Uthman Oladayo Quadri</h1>
-                                <p class="text">
+                                <p class="text" id="animated-text">
                                     I design and build smart automations for businesses using <b>Make.com, Zapier, Airtable, and n8n</b>. With 5+ years of experience in business process automation, I help teams save time, eliminate repetitive tasks, and scale their operations effortlessly. I enjoy every step of the automation process, from workflow analysis to implementation.
                                 </p>
                                 <a
                                     class="button download"
-                                    href="/resources/img/bg1.png"
-                                    download="alex_johnson_cv"
+                                    href="public/resources/Uthman_Oladayo_Quadri_Resume.pdf"
+                                    download="Uthman_Oladayo_Quadri_Resume"
                                     >Download CV</a
                                 >
                                 <a
@@ -1082,7 +1084,7 @@
             });
 
             function submitToMake() {
-                const webhookUrl = "https://hook.eu2.make.com/YOUR_WEBHOOK_URL_HERE";
+                const webhookUrl = "https://hook.eu2.make.com/1wqfh8ldqbx2x39fno44ufgu1v7eav7k";
                 
                 const formData = {
                     name: form_name.value,

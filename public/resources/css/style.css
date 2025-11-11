@@ -8,10 +8,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --width: calc(100vw - 250px);
-    font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri,
-        "Trebuchet MS", sans-serif;
+    --width: calc(100vw - 260px);
+    font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     color: white;
+    overflow-x: hidden;
 }
 
 ::selection {
@@ -26,16 +26,14 @@ a {
     color: white;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 10px;
-    z-index: 1000;
     background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #9900ba;
     border-radius: 44px;
-    z-index: 1000;
 }
 
 .navigation {
@@ -50,22 +48,19 @@ a {
     background: #0d1117;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 5px 0 5px #00000063, 10px 0 10px #0000004d,
-        20px 0 20px #0000004d;
+    box-shadow: 5px 0 5px #00000063, 10px 0 10px #0000004d, 20px 0 20px #0000004d;
     z-index: 999;
     transition: .5s ease-in-out;
 }
 
-.navigation.active {
-    width: 250px;
-}
-
 .navigation h1 {
     position: relative;
-    font-size: 30px;
+    font-size: 24px;
     text-transform: uppercase;
-    padding: 15px;
+    padding: 10px;
     cursor: pointer;
+    color: white;
+    margin-bottom: 10px;
 }
 
 .navigation h1::before,
@@ -80,10 +75,10 @@ a {
 }
 
 .navigation h1::after {
-    top: inherit;
-    left: inherit;
     right: 0;
     bottom: 0;
+    top: auto;
+    left: auto;
 }
 
 .navigation h1 div {
@@ -96,21 +91,30 @@ a {
 }
 
 .navigation h1 div:nth-child(2) {
-    top: inherit;
-    left: inherit;
     bottom: 0;
     right: 0;
+    top: auto;
+    left: auto;
 }
 
 .navigation ul {
     width: 90%;
-    height: 70%;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0;
     padding: 10px;
+}
+
+.navigation p {
+    position: relative;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    padding: 10px;
+    margin: 0;
 }
 
 .navigation ul li {
@@ -149,10 +153,10 @@ a {
 }
 
 .navigation ul li a::after {
-    top: inherit;
     bottom: 0;
-    left: inherit;
     right: -100%;
+    top: auto;
+    left: auto;
 }
 
 .navigation ul li a:hover::before,
@@ -166,13 +170,12 @@ a {
 }
 
 .container {
-    position: relative;
+    position: absolute;
+    left: 250px;
+    top: 0;
     width: var(--width);
-    margin-left: 250px;
     min-height: 100vh;
     background: #161b22;
-    overflow-x: hidden;
-    overflow-y: hidden;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
@@ -180,23 +183,29 @@ a {
 .layer {
     position: absolute;
     width: var(--width);
-    min-height: 100vh;
-    margin-left: 100%;
-    overflow-x: hidden;
-    transition: .5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5),
-        0 0 10px rgba(0, 0, 0, .5),
-        0 0 20px rgba(0, 0, 0, .5);
+    height: 100vh;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+}
+
+.layer2, .layer3, .layer4 {
+    overflow-y: auto;
 }
 
 .layer .main {
-    width: var(--width);
+    width: 100%;
+    max-width: var(--width);
     height: 100vh;
+    overflow-x: hidden;
 }
 
 .layer.active {
-    margin-left: 0;
-    transition-delay: .7s;
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (max-width: 768px) {
@@ -213,10 +222,6 @@ a {
         width: 100%;
     }
 
-    .layer.active {
-        margin-left: 0;
-    }
-
     .hamburger {
         display: flex;
     }
@@ -227,7 +232,7 @@ a {
 
     .layer .main {
         width: 100vw;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .about_container {

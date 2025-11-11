@@ -17,7 +17,7 @@ html {
 .styling {
     position: absolute;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .absolute {
@@ -154,6 +154,7 @@ html {
     min-height: 100vh;
     z-index: 100;
     color: white;
+    padding-top: 50px;
 }
 
 .wrapper .face {
@@ -225,6 +226,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .about_nav ul {
@@ -297,9 +299,10 @@ html {
 .skills .skill {
     position: relative;
     display: flex;
+    flex-direction: column;
     padding: 20px;
     margin: 22px 50px;
-    height: 28px;
+    height: 50px;
     overflow: hidden;
     border-radius: 10px;
     transition: 0.25s ease-in-out;
@@ -307,22 +310,24 @@ html {
 
 .skill .name {
     position: absolute;
-    top: 0%;
-    /* color: white; */
+    top: 5px;
+    color: white;
+    z-index: 3;
 }
 
 .skill .value {
     position: absolute;
-    top: 0%;
-    right: 0;
-    /* color: white; */
+    top: 5px;
+    right: 10px;
+    color: white;
+    z-index: 3;
 }
 
 .skill .percent {
     position: absolute;
-    top: 50%;
+    bottom: 10px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 90%;
     height: 20px;
     border-radius: 100px;

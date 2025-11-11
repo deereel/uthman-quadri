@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .canvas_container canvas {
@@ -31,6 +32,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 1001;
+}
+
+.content-for-home h1 {
+    color: white;
+    text-align: center;
 }
 
 .content-for-home .img-container {
@@ -128,7 +135,7 @@
     transform: translate(-100%, -50%);
     width: 100vw;
     opacity: 0;
-    color: #cccccc;
+    color: white;
     text-align: right;
     visibility: hidden;
     border-radius: 500px;

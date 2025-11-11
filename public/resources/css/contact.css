@@ -99,10 +99,11 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 50px;
 }
 
 form h1 {
-    color: #ccc;
+    color: white;
     text-align: center;
 }
 

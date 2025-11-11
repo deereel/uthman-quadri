@@ -20,3 +20,6 @@ function handleButtonClick(button) {
 aboutNavButtons.forEach((button) => {
     button.addEventListener("click", () => handleButtonClick(button));
 });
+
+// Initialize with first section active
+aboutContainer.classList.add("one");

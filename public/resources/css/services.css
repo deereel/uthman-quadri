@@ -1,7 +1,8 @@
 .services {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 /* BACKGROUND */
@@ -95,7 +96,7 @@
 .services .capabilities.left .c_content .c_title {
     position: absolute;
     top: 50%;
-    right: -50%;
+    right: -30%;
     font-size: 3.5em;
     font-weight: bolder;
     width: 500px;
@@ -292,6 +293,7 @@
 
 .t_dummy {
     display: inline-block;
+    color: white;
 }
 
 .t-box {
@@ -376,6 +378,11 @@
     border-top: 2px solid rgba(255, 255, 255, 0.1);
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.services .hero .hero-text h2 {
+    color: white;
 }
 
 .services .capabilities.move-little-down {

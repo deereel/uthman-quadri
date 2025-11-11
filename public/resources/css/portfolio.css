@@ -20,7 +20,6 @@ a {
 
 .portfolio {
     position: relative;
-    width: calc(100% - 250px);
 }
 .mymixcont {
     display: flex;

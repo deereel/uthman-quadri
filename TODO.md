@@ -1,9 +1,14 @@
-# TODO: Update Site Texts to Automation-Related Statements
+# TODO: Update Website to Use New Directory Structure
 
 ## Tasks
-- [ ] Update testimonials in the swiper-wrapper to praise automation expertise instead of web design/technician skills
-- [ ] Fix typo in services hero text: change "scale your technician" to "scale your business"
-- [ ] Change contact form title from "Get In Touch" to "Start Automating"
+- [x] Update portfolio grid image sources to use new project directory paths
+- [x] Update JavaScript modal screenshots arrays to use new project directory paths
+- [x] Update services section foot links to use new project directory paths
+- [x] Add the newly added project to the portfolio grid
 
 ## Progress
-- [ ] All tasks completed
+- [x] All tasks completed
+
+## Additional Tasks
+- [x] Add Contact Form Automation project to portfolio grid
+- [x] Verify all project images and documentation links are correct

@@ -67,6 +67,18 @@ function updateActiveTab(activeIndex) {
 hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     nav.classList.toggle("active");
+    document.body.classList.toggle("nav-open");
+});
+
+// Close navigation when clicking on nav links on mobile
+tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+            hamburger.classList.remove("active");
+            nav.classList.remove("active");
+            document.body.classList.remove("nav-open");
+        }
+    });
 });
 
 home();

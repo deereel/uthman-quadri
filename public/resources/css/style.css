@@ -14,6 +14,10 @@ body {
     overflow-x: hidden;
 }
 
+body.nav-open {
+    overflow: hidden;
+}
+
 ::selection {
     background: #a640f5;
 }
@@ -211,10 +215,18 @@ a {
 @media (max-width: 768px) {
     .navigation {
         width: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navigation.active {
+        width: 250px;
+        transform: translateX(0);
     }
 
     .container {
         width: 100%;
+        left: 0;
         margin-left: 0;
     }
 
@@ -224,10 +236,12 @@ a {
 
     .hamburger {
         display: flex;
+        z-index: 1001;
     }
 
-    .hamburger.active~.container .layer.active {
-        margin-left: 250px;
+    .hamburger.active~.navigation {
+        transform: translateX(0);
+        width: 250px;
     }
 
     .layer .main {
@@ -259,5 +273,116 @@ a {
 
     .tip {
         margin-left: 0;
+    }
+
+    /* Mobile touch improvements */
+    .navigation ul li a {
+        padding: 20px 30px;
+        font-size: 18px;
+        min-height: 44px;
+    }
+
+    .about_nav ul li a {
+        padding: 12px 20px;
+        font-size: 18px;
+        min-height: 44px;
+    }
+
+    .button {
+        padding: 12px 16px;
+        font-size: 16px;
+        min-height: 44px;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .social-icons .s-icon a {
+        padding: 10px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inp_field {
+        width: 90% !important;
+        margin: 15px auto !important;
+    }
+
+    .message {
+        width: 90% !important;
+        margin: 15px auto !important;
+    }
+
+    .submit {
+        width: 90% !important;
+        margin: 20px auto !important;
+        padding: 15px !important;
+        font-size: 18px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-for-home h1 {
+        font-size: 24px;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .content-for-home p {
+        font-size: 16px;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .face.face1 h1 {
+        font-size: 28px;
+    }
+
+    .face.face1 p {
+        font-size: 18px;
+    }
+
+    .wrapper .face.face1 {
+        padding: 20px;
+    }
+
+    .about_nav ul li {
+        margin: 5px;
+    }
+
+    .about_nav ul li a {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .skill {
+        margin: 15px 20px !important;
+    }
+
+    .cover {
+        width: 90% !important;
+        margin: 10px auto !important;
+        padding: 10px !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .content-for-home h1 {
+        font-size: 20px;
+    }
+
+    .face.face1 h1 {
+        font-size: 24px;
+    }
+
+    .about_nav ul li a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .skill {
+        margin: 10px 15px !important;
     }
 }

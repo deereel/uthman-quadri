@@ -212,161 +212,109 @@ a {
     visibility: visible;
 }
 
+/* Mobile Styles */
 @media (max-width: 768px) {
     body {
         --width: 100vw;
+        overflow-x: hidden;
     }
 
+    /* Hide desktop navigation, show mobile hamburger */
     .navigation {
+        position: fixed;
+        top: 0;
+        left: -250px;
         width: 250px;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        height: 100vh;
+        background: #0d1117;
+        transition: left 0.3s ease;
+        z-index: 1000;
     }
 
     .navigation.active {
-        transform: translateX(0);
+        left: 0;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
+    /* Full width container */
     .container {
         width: 100vw;
         left: 0;
-        margin-left: 0;
+        grid-template-columns: 1fr;
     }
 
     .layer {
         width: 100vw;
     }
 
-    .hamburger {
-        display: flex !important;
-        z-index: 1001;
-    }
-
     .layer .main {
         width: 100vw;
-        min-height: 100vh;
+        max-width: 100vw;
     }
 
+    /* About container mobile */
     .about_container {
-        position: relative;
+        width: 300vw;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        min-height: 50vh;
-        width: 300vw;
-        margin-left: 0;
-        transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-    
-    .about_container.one {
-        margin-left: 0;
-    }
-    
-    .about_container.two {
-        margin-left: -100vw;
-    }
-    
-    .about_container.three {
-        margin-left: -200vw;
+        transition: margin-left 0.5s ease;
     }
 
-    .tip {
-        margin-left: 0;
-    }
+    .about_container.one { margin-left: 0; }
+    .about_container.two { margin-left: -100vw; }
+    .about_container.three { margin-left: -200vw; }
 
-    /* Mobile touch improvements */
-    .navigation ul li a {
-        padding: 20px 30px;
-        font-size: 18px;
-        min-height: 44px;
-    }
-
-    .about_nav ul li a {
-        padding: 12px 20px;
-        font-size: 18px;
-        min-height: 44px;
-    }
-
-    .button {
-        padding: 12px 16px;
-        font-size: 16px;
-        min-height: 44px;
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    .social-icons .s-icon a {
-        padding: 10px;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .inp_field {
-        width: 90% !important;
-        margin: 15px auto !important;
-    }
-
-    .message {
-        width: 90% !important;
-        margin: 15px auto !important;
-    }
-
-    .submit {
-        width: 90% !important;
-        margin: 20px auto !important;
-        padding: 15px !important;
-        font-size: 18px !important;
-    }
-}
-
-@media (max-width: 480px) {
+    /* Mobile typography */
     .content-for-home h1 {
         font-size: 24px;
-        padding: 0 20px;
         text-align: center;
+        padding: 0 20px;
     }
 
     .content-for-home p {
         font-size: 16px;
-        padding: 0 20px;
         text-align: center;
+        padding: 0 20px;
     }
 
-    .face.face1 h1 {
-        font-size: 28px;
-    }
-
-    .face.face1 p {
-        font-size: 18px;
-    }
-
-    .wrapper .face.face1 {
-        padding: 20px;
-    }
-
-    .about_nav ul li {
-        margin: 5px;
-    }
-
+    /* Touch targets */
+    .navigation ul li a,
     .about_nav ul li a {
+        padding: 15px 20px;
         font-size: 16px;
-        padding: 10px 15px;
+        min-height: 44px;
     }
 
-    .skill {
-        margin: 15px 20px !important;
+    .button {
+        padding: 12px 20px;
+        min-height: 44px;
+        margin: 10px 0;
     }
 
-    .cover {
-        width: 90% !important;
-        margin: 10px auto !important;
-        padding: 10px !important;
+    /* Form elements */
+    .inp_field,
+    .message {
+        width: 90%;
+        margin: 15px auto;
+    }
+
+    .submit {
+        width: 90%;
+        margin: 20px auto;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    /* Portfolio modal */
+    .tip {
+        margin-left: 0;
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 480px) {
     .content-for-home h1 {
         font-size: 20px;
     }
@@ -377,10 +325,12 @@ a {
 
     .about_nav ul li a {
         font-size: 14px;
-        padding: 8px 12px;
+        padding: 10px 15px;
     }
 
-    .skill {
-        margin: 10px 15px !important;
+    .skill,
+    .cover {
+        margin: 10px 15px;
+        padding: 10px;
     }
 }

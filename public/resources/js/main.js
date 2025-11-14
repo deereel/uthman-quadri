@@ -16,6 +16,12 @@ window.home = function() {
     collapse();
     layers[0].classList.add("active");
     updateActiveTab(0);
+    // Reset mobile menu state
+    if (window.innerWidth <= 768) {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        document.body.classList.remove('nav-open');
+    }
 }
 
 window.about = function() {
@@ -64,19 +70,25 @@ function updateActiveTab(activeIndex) {
     });
 }
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    nav.classList.toggle("active");
-    document.body.classList.toggle("nav-open");
-});
+// Simple mobile menu toggle
+function toggleMobileMenu() {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
+}
 
-// Close navigation when clicking on nav links on mobile
+// Add event listener
+if (hamburger) {
+    hamburger.addEventListener('click', toggleMobileMenu);
+}
+
+// Close menu when nav link clicked on mobile
 tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
+    tab.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
-            hamburger.classList.remove("active");
-            nav.classList.remove("active");
-            document.body.classList.remove("nav-open");
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.classList.remove('nav-open');
         }
     });
 });

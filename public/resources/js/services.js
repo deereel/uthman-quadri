@@ -14,7 +14,7 @@ const projects = [
     { name: 'HR Onboarding Workflow', img: 'public/resources/img/portfolios/logo/3.jpg' }
 ];
 
-function getTwiceDaily Seed() {
+function getTwiceDailySeed() {
     const now = new Date();
     const hour = now.getHours();
     const period = hour < 12 ? 0 : 1; // 0 for AM, 1 for PM

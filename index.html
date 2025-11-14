@@ -59,7 +59,7 @@
 
         <!-- THE REAL NAVIGATION -->
         <nav class="navigation">
-            <h1>
+            <h1 onclick="home()" style="cursor: pointer;">
                 Uthman Quadri
                 <div></div>
                 <div></div>
@@ -1185,7 +1185,9 @@
         <script>
           // Each card will carry data attributes for modal content
           document.querySelectorAll('.mymixcont .mix').forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
               const title = card.querySelector('.title').innerText;
               const description = card.getAttribute('data-description');
               const tools = card.getAttribute('data-tools');
@@ -1215,24 +1217,7 @@
           });
         </script>
 
-        <script>
-        // Tabs in About section (Experience / Education / Skills)
-        const aboutBtns = document.querySelectorAll('.about_tab');
-        const aboutContainer = document.querySelector('.about_container');
 
-        aboutBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-            aboutBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Slide the container to the correct section
-            aboutContainer.className = 'about_container';
-            if (index === 0) aboutContainer.classList.add('one');
-            if (index === 1) aboutContainer.classList.add('two');
-            if (index === 2) aboutContainer.classList.add('three');
-            });
-        });
-        </script>
 
 
         <!-- Bootstrap JS -->

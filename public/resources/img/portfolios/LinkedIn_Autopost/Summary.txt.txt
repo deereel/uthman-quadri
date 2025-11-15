@@ -1,0 +1,18 @@
+Short Summary
+
+This automation posts your new Airtable projects directly to LinkedIn — either instantly (Zapier) or only after approval (Make.com). It boosts visibility, saves time, and ensures consistent marketing without manual posting.
+
+
+Tools 
+
+Airtable - Zapier - Make.com - LinkedIn API
+
+
+Author
+
+Uthman Oladayo Quadri
+
+
+Link
+
+Download or View Documentation (Link to documentation pdf in the project folder)

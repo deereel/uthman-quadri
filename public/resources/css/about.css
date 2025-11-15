@@ -154,7 +154,7 @@ html {
     min-height: 100vh;
     z-index: 100;
     color: white;
-    padding-top: 20px;
+    padding-top: 220px;
 }
 
 .wrapper .face {
@@ -172,7 +172,7 @@ html {
 
 .face.face1 h1 {
     font-family: "Kaushan Script", cursive;
-    font-size: 4.5vw;
+    font-size: 3.5vw;
 }
 
 .face.face1 p {

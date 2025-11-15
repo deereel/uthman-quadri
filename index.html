@@ -224,7 +224,9 @@
                                 <p>Hello,</p>
                                 <h1>I'm Uthman Oladayo Quadri</h1>
                                 <p class="text" id="animated-text">
-                                    I design and build smart automations for businesses using <b>Make.com, Zapier, Airtable, and n8n</b>. With 5+ years of experience in business process automation, I help teams save time, eliminate repetitive tasks, and scale their operations effortlessly. I enjoy every step of the automation process, from workflow analysis to implementation.
+                                    I design and build smart automations for businesses using <b>Make.com, Zapier, Airtable, and n8n</b>. I've delivered automation solutions that help teams streamline workflows, eliminate repetitive tasks, and operate more efficiently.
+
+                                    With over 3 years of experience in business process optimization and workflow analysis, I understand how to translate real operational challenges into clean, automated systems that actually work. I'm passionate about creating solutions that save time, improve accuracy, and support scalable growth — from initial workflow mapping to full implementation.
                                 </p>
                                 <a
                                     class="button download"
@@ -1101,9 +1103,16 @@
                     return anime.random(-500, 500);
                 },
                 translateY: () => {
-                    return anime.random(-500, 500);
+                    return anime.random(100, 800);
                 },
                 duration: 3000,
+            }).add({
+                rotate: 0,
+                translateX: 0,
+                translateY: 0,
+                duration: 1000,
+                delay: anime.stagger(10),
+                easing: "easeOutElastic(1, .8)"
             });
 
             const animate4 = anime({
@@ -1171,7 +1180,7 @@
                     <span class="visually-hidden">Next</span>
                   </button>
                 </div>
-                <p id="modalDescription"></p>
+                <p id="modalDescription" style="user-select: text; -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; cursor: text;"></p>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><strong>Tools:</strong> <span id="modalTools"></span></li>
                   <li class="list-group-item"><strong>Author:</strong> <span id="modalClient"></span></li>

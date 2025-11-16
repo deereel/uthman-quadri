@@ -1,6 +1,6 @@
 Short Summary
 
-This automation posts your new Airtable projects directly to LinkedIn — either instantly (Zapier) or only after approval (Make.com). It boosts visibility, saves time, and ensures consistent marketing without manual posting.
+This automation posts new Airtable projects directly to LinkedIn. The Zapier version posts instantly. The Make.com version adds an approval checkbox, filters pending posts, and avoids spam by spacing multiple posts 10 minutes apart — and updates Airtable once each post is live.
 
 
 Tools 

@@ -28,6 +28,21 @@ a {
     min-height: 100vh;
 }
 
+.swiper-container-portfolio {
+    width: 100%;
+    height: 80vh;
+    padding: 20px 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    height: 100%;
+    padding: 20px;
+}
+
 .mix {
     position: relative;
     width: 280px;
@@ -267,6 +282,31 @@ a {
 
     .about_nav ul li {
         display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        gap: 15px;
+    }
+    
+    .mix {
+        width: 100%;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9, 1fr);
+        gap: 10px;
+    }
+    
+    .swiper-container-portfolio {
+        height: 90vh;
     }
 }
 

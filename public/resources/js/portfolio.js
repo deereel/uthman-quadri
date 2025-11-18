@@ -1,23 +1,26 @@
 $(document).ready(() => {
-    let config = document.querySelector(".mymixcont");
-    let mixer = mixitup(config, {
-        selectors: {
-            target: ".mix",
-        },
-        animation: {
-            easing: "ease-in-out",
-            applyPerspective: true,
-            duration: 750,
-            reverseOut: true,
-            effects: "fade rotateY(90deg) stagger(100ms)",
-            staggerSequence: function (i) {
-                return 2 * i - 5 * (i / 3 - (1 / 3) * (i % 3));
-            },
-            nudge: false,
-        },
-        controls: {
-            live: false,
-        },
+    // Portfolio filtering for swiper-based layout
+    const filterButtons = document.querySelectorAll('.filter');
+    const allProjects = document.querySelectorAll('.mix:not(.placeholder)');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Update active filter button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const filter = button.getAttribute('data-filter');
+            
+            allProjects.forEach(project => {
+                if (filter === 'all' || project.classList.contains(filter.replace('.', ''))) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        });
     });
 
     $(".closeButton").click(() => {
@@ -111,6 +114,11 @@ $(document).ready(() => {
     });
 
     let about_nav_btn_2 = document.querySelectorAll(".about_nav a");
+    
+    // Initialize filter buttons
+    if (about_nav_btn_2.length > 0) {
+        about_nav_btn_2[0].classList.add('active');
+    }
 
     function collapse2() {
         about_nav_btn_2.forEach((link) => {

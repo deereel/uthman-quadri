@@ -1,0 +1,18 @@
+Short Summary
+
+This automation automatically manages client bookings from a Google Form. When a client submits the form, their response is added to a Google Sheet. The system then checks Google Calendar — if the event already exists, it updates it; if not, it creates a new one. This ensures all meetings are automatically scheduled, updated, and synced with reminder notifications, keeping your calendar accurate without manual work.
+
+
+Tools 
+
+Google forms - Google Sheets - Google Calendar - Make.com
+
+
+Author
+
+Uthman Oladayo Quadri
+
+
+Link
+
+Download or View Documentation (Link to documentation pdf in the project folder)

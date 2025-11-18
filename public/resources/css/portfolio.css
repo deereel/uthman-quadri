@@ -32,6 +32,72 @@ a {
     width: 100%;
     height: 80vh;
     padding: 20px 0;
+    position: relative;
+}
+
+/* Move navigation arrows to bottom */
+.swiper-container-portfolio .swiper-button-next,
+.swiper-container-portfolio .swiper-button-prev {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: 0;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    color: #fff;
+}
+
+.swiper-container-portfolio .swiper-button-next:after,
+.swiper-container-portfolio .swiper-button-prev:after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Style pagination */
+.swiper-container-portfolio .swiper-pagination {
+    bottom: 30px;
+    text-align: center;
+}
+
+.swiper-container-portfolio .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 6px;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.swiper-container-portfolio .swiper-pagination-bullet-active {
+    background: #f64253;
+    transform: scale(1.2);
+}
+
+/* Page numbering display */
+.portfolio-navigation {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.page-info {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
 }
 
 .projects-grid {
@@ -307,6 +373,32 @@ a {
     
     .swiper-container-portfolio {
         height: 90vh;
+    }
+    
+    .portfolio-navigation {
+        bottom: 15px;
+        gap: 15px;
+    }
+    
+    .swiper-container-portfolio .swiper-button-next,
+    .swiper-container-portfolio .swiper-button-prev {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .swiper-container-portfolio .swiper-button-next:after,
+    .swiper-container-portfolio .swiper-button-prev:after {
+        font-size: 14px;
+    }
+    
+    .page-info {
+        padding: 6px 12px;
+        font-size: 12px;
+        min-width: 60px;
+    }
+    
+    .swiper-container-portfolio .swiper-pagination {
+        bottom: 20px;
     }
 }
 

@@ -1,0 +1,18 @@
+Short Summary
+
+This automation system manages the entire invoice lifecycle automatically. It generates branded PDF invoices from completed projects, emails them to clients, stores a copy in Google Drive, and updates Airtable with all relevant details. A second automation sends 7-day payment reminders, while a dashboard gives a full overview of outstanding payments, paid invoices, and monthly revenue. It eliminates manual invoicing, reduces billing delays, and improves operational efficiency.
+
+
+Tools 
+
+Make.com — Airtable — Google Docs — Google Drive — Gmail
+
+
+Author
+
+Uthman Oladayo Quadri
+
+
+Link
+
+Download or View Documentation (Link to documentation)

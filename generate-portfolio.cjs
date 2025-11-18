@@ -4,7 +4,9 @@ const path = require('path');
 const portfoliosDir = 'public/resources/img/portfolios';
 
 function parseSummaryTxt(content) {
-    const sections = content.split('\n\n').filter(s => s.trim());
+    // Handle both Windows (\r\n) and Unix (\n) line endings
+    const normalizedContent = content.replace(/\r\n/g, '\n');
+    const sections = normalizedContent.split('\n\n\n').filter(s => s.trim());
     const data = {};
 
     sections.forEach(section => {
@@ -27,6 +29,7 @@ function parseSummaryTxt(content) {
 }
 
 function getCategory(tools) {
+    if (!tools) return 'make'; // default if tools is undefined
     if (tools.includes('Make.com')) return 'make';
     if (tools.includes('Zapier')) return 'zapier';
     if (tools.includes('Airtable')) return 'airtable';
@@ -41,37 +44,50 @@ function getImages(folderPath) {
 }
 
 function generatePortfolioHTML(projects) {
-    return projects.map(project => `
-                        <div class="mix ${project.category}">
-                            <img
-                                src="${project.tileImage}"
-                                alt="" />
-                            <span class="title">${project.title}</span>
-                            <span class="port_link">View Details</span>
-                        </div>`).join('\n');
+    const slides = [];
+    const projectsPerSlide = 9;
+    
+    for (let i = 0; i < projects.length; i += projectsPerSlide) {
+        const slideProjects = projects.slice(i, i + projectsPerSlide);
+        
+        // Add placeholder if needed to fill the slide
+        while (slideProjects.length < projectsPerSlide && i === 0) {
+            slideProjects.push({
+                isPlaceholder: true
+            });
+        }
+        
+        const slideHTML = `
+                            <div class="swiper-slide">
+                                <div class="projects-grid">
+${slideProjects.map(project => {
+    if (project.isPlaceholder) {
+        return `                                    <div class="mix make placeholder" style="opacity: 0.3;">
+                                        <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: #666;">
+                                            <span>More Projects Coming Soon</span>
+                                        </div>
+                                        <span class="title">Future Project</span>
+                                        <span class="port_link">Coming Soon</span>
+                                    </div>`;
+    }
+    return `                                    <div class="mix ${project.category}" data-id="${project.id}" data-description="${project.description.replace(/"/g, '"')}" data-tools="${project.tools}" data-author="${project.client}" data-link="${project.link}" data-images='${JSON.stringify(project.screenshots)}'>
+                                        <img src="${project.tileImage}" alt="" />
+                                        <span class="title">${project.title}</span>
+                                        <span class="port_link">View Details</span>
+                                    </div>`;
+}).join('\n')}
+                                </div>
+                            </div>`;
+        
+        slides.push(slideHTML);
+    }
+    
+    return slides.join('\n');
 }
 
 function generatePortfolioJS(projects) {
-    const cases = projects.map(project => `
-                case '${project.title}':
-                  description = '${project.description.replace(/'/g, "\\'")}';
-                  tools = '${project.tools}';
-                  client = '${project.client}';
-                  link = '${project.link}';
-                  screenshots = [${project.screenshots.map(s => `'${s}'`).join(', ')}];
-                  break;`).join('\n');
-
-    return `
-              // Assign sample content based on project title
-              switch (title) {${cases}
-
-                default:
-                  description = 'Automation workflow connecting multiple apps.';
-                  tools = 'Make, Zapier, Airtable';
-                  client = 'Various';
-                  link = '#';
-                  screenshots = ['public/resources/img/portfolios/app/1.jpg'];
-              }`;
+    // No longer needed as we use data attributes
+    return '';
 }
 
 function main() {
@@ -82,7 +98,7 @@ function main() {
     const projects = [];
 
     folders.forEach(folder => {
-        const folderPath = path.join(portfoliosDir, folder);
+        const folderPath = path.resolve(portfoliosDir, folder);
         const summaryPath = path.join(folderPath, 'Summary.txt');
 
         if (!fs.existsSync(summaryPath)) {
@@ -102,14 +118,25 @@ function main() {
 
         let link = '#';
         if (summaryData.linkText && summaryData.linkText.includes('Documentation')) {
+            // First try the expected naming convention
             const docName = `${folder.replace(/ /g, '_')}_Doc.pdf`;
             const docPath = path.join(folderPath, docName);
             if (fs.existsSync(docPath)) {
                 link = `public/resources/img/portfolios/${folder}/${docName}`;
+            } else {
+                // Fallback to any PDF file in the folder, case-insensitive match
+                const files = fs.readdirSync(folderPath);
+                const pdfFile = files.find(file => file.toLowerCase().endsWith('.pdf'));
+                if (pdfFile) {
+                    link = `public/resources/img/portfolios/${folder}/${pdfFile}`;
+                }
             }
         }
 
+        const id = folder.toLowerCase().replace(/ /g, '-');
+
         projects.push({
+            id,
             title,
             description: summaryData.description || '',
             tools: summaryData.tools || '',
@@ -127,22 +154,20 @@ function main() {
     // Generate JS
     const portfolioJS = generatePortfolioJS(projects);
 
-    // Read index.html
-    let indexContent = fs.readFileSync('index.html', 'utf8');
+    // Read portfolio.html
+    let indexContent = fs.readFileSync('portfolio.html', 'utf8');
 
-    // Replace mymixcont content
-    const mymixcontRegex = /<div class="mymixcont">[\s\S]*?<\/div>/;
-    const newMymixcont = `<div class="mymixcont">
-                        ${portfolioHTML}
-                    </div>`;
-    indexContent = indexContent.replace(mymixcontRegex, newMymixcont);
-
-    // Replace JS switch statement
-    const jsRegex = /\/\/ Assign sample content based on project title[\s\S]*?switch \(title\) \{[\s\S]*?default:[\s\S]*?screenshots = \['public\/resources\/img\/portfolios\/app\/1\.jpg'\];\s*\}/;
-    indexContent = indexContent.replace(jsRegex, portfolioJS.trim());
+    // Replace portfolio swiper-wrapper content
+    const portfolioSwiperRegex = /<div class="swiper-container-portfolio">[\s\S]*?<div class="swiper-pagination"><\/div>/;
+    const newPortfolioSwiper = `<div class="swiper-container-portfolio">
+                        <div class="swiper-wrapper">
+${portfolioHTML}
+                        </div>
+                        <div class="swiper-pagination"></div>`;
+    indexContent = indexContent.replace(portfolioSwiperRegex, newPortfolioSwiper);
 
     // Write back
-    fs.writeFileSync('index.html', indexContent);
+    fs.writeFileSync('portfolio.html', indexContent);
 
     console.log('Portfolio updated successfully!');
 }

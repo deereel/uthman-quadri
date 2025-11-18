@@ -1,0 +1,20 @@
+Short Summary
+
+This automation streamlines your client onboarding by turning every Google Form submission into a clean, ready-to-use CRM record. When someone submits your form, their message is automatically summarized using Google Gemini AI, highlighting key details like project type, goals, timeline, and budget. The system then checks your Airtable CRM for existing leads and either updates or creates the record instantly.
+
+This gives you clear, structured insights into every new inquiry, eliminates duplicates, and saves hours of manual reading and data entry — helping you respond faster and qualify leads more effectively.
+
+
+Tools 
+
+Make.com - Google Forms - Google Sheets - Gemini AI - Airtable
+
+
+Author
+
+Uthman Oladayo Quadri
+
+
+Link
+
+Download or View Documentation (Link to documentation)

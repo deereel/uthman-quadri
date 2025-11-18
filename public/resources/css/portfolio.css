@@ -35,20 +35,24 @@ a {
     position: relative;
 }
 
-/* Move navigation arrows to bottom */
-.swiper-container-portfolio .swiper-button-next,
-.swiper-container-portfolio .swiper-button-prev {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    margin: 0;
+/* Position navigation arrows beside page numbering */
+.portfolio-navigation .swiper-button-next,
+.portfolio-navigation .swiper-button-prev {
+    position: static;
     width: 44px;
     height: 44px;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 50%;
     color: #fff;
+    margin: 0;
+}
+
+.portfolio-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .swiper-container-portfolio .swiper-button-next:after,

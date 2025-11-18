@@ -154,8 +154,8 @@ function main() {
     // Generate JS
     const portfolioJS = generatePortfolioJS(projects);
 
-    // Read portfolio.html
-    let indexContent = fs.readFileSync('portfolio.html', 'utf8');
+    // Read index.html
+    let indexContent = fs.readFileSync('index.html', 'utf8');
 
     // Replace portfolio swiper-wrapper content
     const portfolioSwiperRegex = /<div class="swiper-container-portfolio">[\s\S]*?<div class="swiper-pagination"><\/div>/;
@@ -167,7 +167,7 @@ ${portfolioHTML}
     indexContent = indexContent.replace(portfolioSwiperRegex, newPortfolioSwiper);
 
     // Write back
-    fs.writeFileSync('portfolio.html', indexContent);
+    fs.writeFileSync('index.html', indexContent);
 
     console.log('Portfolio updated successfully!');
 }

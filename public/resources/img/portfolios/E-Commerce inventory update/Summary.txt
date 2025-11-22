@@ -1,0 +1,18 @@
+Short Summary
+
+This automation connects Airtable, Google Forms, Google Sheets, Make.com, and a custom website into a fully synchronized e-commerce system. New products, stock updates, orders, and images all flow automatically between tools without manual input. The system prevents duplicates, maintains accurate real-time inventory, processes customer orders instantly, and provides a full admin dashboard for oversight. It is a complete, scalable automation backend for small online stores.
+
+
+Tools 
+
+Make.com - Airtable — Google Forms — Google Sheets — Website Frontend - Node.js Scripts
+
+
+Author
+
+Uthman Oladayo Quadri
+
+
+Link
+
+Download or View Documentation (Link to documentation pdf in the project folder)
